@@ -1,41 +1,221 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
-header{
-    background-color: aquamarine;
-    height: 80px;
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #000;
+    /* Fallback color */
+}
+
+/* Canvas Background */
+#weather-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: linear-gradient(135deg, #121212, #2c3e50);
+    /* Dark elegant base */
+}
+
+/* Dark overlay to make text pop */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: -1;
+}
+
+.card {
+    background: rgba(0, 0, 0, 0.6);
+    /* Much darker for better contrast */
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+    width: 90%;
+    max-width: 470px;
+    padding: 40px 35px;
+    text-align: center;
+    color: #fff;
+    transform-style: preserve-3d;
+}
+
+.search-box {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.search-box input {
+    border: 0;
+    outline: 0;
+    background: #ebfffc;
+    color: #555;
+    padding: 10px 25px;
+    height: 60px;
+    border-radius: 30px;
+    flex: 1;
+    margin-right: 16px;
+    font-size: 18px;
+}
+
+.search-box button {
+    border: 0;
+    outline: 0;
+    background: #ff7e5f;
+    /* High contrast orange/coral */
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    transition: 0.2s ease;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-main{
-    background-color: blueviolet;
-    height: calc(100vh - 80px);
+
+.search-box button:hover {
+    background: #feb47b;
+    transform: scale(1.05);
+}
+
+.weather-icon {
+    width: 150px;
+    margin-top: 30px;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.2));
+}
+
+.weather h1 {
+    font-size: 60px;
+    /* Reduced from 80px for better fit */
+    font-weight: 500;
+}
+
+.weather h2 {
+    font-size: 35px;
+    /* Reduced from 45px */
+    font-weight: 400;
+    margin-top: -10px;
+}
+
+#conn {
+    font-size: 20px;
+    margin: 10px 0 10px 0;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+#weather-tip {
+    font-size: 16px;
+    font-style: italic;
+    color: #ffdab9;
+    /* Peach Puff / Warm */
+    margin-top: 15px;
+    min-height: 24px;
+    opacity: 0.9;
+    animation: fadeInUp 0.6s ease backwards;
+    animation-delay: 0.5s;
+}
+
+.details {
     display: flex;
     align-items: center;
-    justify-content: center;
-    color: white;
+    justify-content: space-between;
+    padding: 0 20px;
+    margin-top: 40px;
 }
-.mid{
+
+.col {
     display: flex;
-    gap: 1rem;
+    align-items: center;
+    text-align: left;
 }
-.icon img{
-    width: 50px;
-    height: 50px;
+
+.detail-icon {
+    width: 40px;
+    margin-right: 10px;
 }
-#input{
-    border: none;
-    border-bottom: 2px solid black;
-    background-color: aquamarine;
-} 
-#btn{
-    border: 2px;
-    border-radius: 10px;
-    background-color: azure;
-    height: 30px;
-    width: 50px;
+
+.time-container p,
+.wind {
+    font-size: 18px;
+    /* Reduced from 28px */
+    margin-top: -6px;
+}
+
+/* UI ANIMATIONS */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Apply animations to UI elements */
+.weather h1 {
+    animation: fadeInUp 0.6s ease backwards;
+    animation-delay: 0.1s;
+}
+
+.weather h2 {
+    animation: fadeInUp 0.6s ease backwards;
+    animation-delay: 0.2s;
+}
+
+.details {
+    animation: fadeInUp 0.6s ease backwards;
+    animation-delay: 0.3s;
+}
+
+#conn {
+    animation: fadeInUp 0.6s ease backwards;
+    animation-delay: 0.4s;
+}
+
+/* SEARCH BAR HOVER */
+.search-box:hover {
+    transform: translateY(-2px);
+    transition: transform 0.3s ease;
+}
+
+/* BODY TRANSITIONS */
+body {
+    transition: background 1s ease;
+    background: transparent;
+    /* Ensure we see the video behind */
 }
