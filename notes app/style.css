@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.Paraent{
+   height: 400px;
+   width: 200px;
+   position: absolute;
+   background-color: aqua;
+   margin-left: 43%;
+   margin-top: 15%;
+   margin-right: auto;
+}
+.child{
+    position: relative;
+    height: 40px;
+    width: 40px;
+    background-color: red;
+
+}
+
+.score-container{
+    color: black;
+    margin-left: 47%;
+    
+}
+body{
+    background-color: lightblue;
+}

@@ -1,0 +1,47 @@
+.grandparents {
+    background-color: rgb(16, 97, 123);
+
+    height: 200px;
+    
+    
+    width: 60%;
+    margin-top: 5%;
+    border-radius: 20px;
+    color: white;
+}
+
+
+.parents {
+    background-color: lightgreen;
+    height: 150px;
+    width: 90%;
+    margin-left: 42px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    color: black;
+}
+body{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+   
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.event-log{
+    background-color: rgb(14, 41, 146);
+    width: 400px;
+    padding: 20px;
+    margin-top: 10px;
+    border: 1px solid black;
+    border-radius: 25px;
+    color: white;
+}
